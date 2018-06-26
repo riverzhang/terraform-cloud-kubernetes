@@ -1,0 +1,28 @@
+[all]
+kubernetes-k8s-master0 ansible_host=10.250.203.242
+kubernetes-k8s-worker0 ansible_host=10.250.194.151
+kubernetes-k8s-master0 ansible_host=10.250.203.242
+
+
+bastion ansible_host=54.223.154.83
+
+[kube-master]
+kubernetes-k8s-master0
+
+
+[kube-node]
+kubernetes-k8s-worker0
+
+
+[etcd]
+kubernetes-k8s-master0
+
+
+[k8s-cluster:children]
+kube-node
+kube-master
+
+
+[k8s-cluster:vars]
+apiserver_loadbalancer_domain_name="kubernetes-elb-k8s-612721673.cn-north-1.elb.amazonaws.com.cn"
+
