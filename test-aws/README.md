@@ -13,7 +13,6 @@
 
 - docker run -it  \
   -e AWS_ACCESS_KEY_ID=xxxxxx  \ 
-  -e AWS_SECRET_ACCESS_KEY=xxxxx \
   -e AWS_SSH_KEY_NAME=xxxx  \
   -e AWS_DEFAULT_REGION=xxxxx  \
   -e ami=xxxxx \
