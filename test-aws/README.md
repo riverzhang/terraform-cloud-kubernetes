@@ -11,7 +11,7 @@
 
 - docker build -t alauda.io/alauda/terraform-aws:1.0 .
 
-- docker run -it \
+- docker run -it  \
   -e AWS_ACCESS_KEY_ID=xxxxxx  \ 
   -e AWS_SECRET_ACCESS_KEY=xxxxx \
   -e AWS_SSH_KEY_NAME=xxxx  \
