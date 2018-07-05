@@ -11,13 +11,13 @@
 
 - docker build -t alauda.io/alauda/terraform-aws:1.0 .
 
-- docker run   -it \
-  -e AWS_ACCESS_KEY_ID=xxxxxx \ 
-  -e AWS_SECRET_ACCESS_KEY=xxxxx \
-  -e AWS_SSH_KEY_NAME=xxxx \
-  -e AWS_DEFAULT_REGION=xxxxx \
+- docker run -it \
+  -e AWS_ACCESS_KEY_ID=xxxxxx  \ 
+  -e AWS_SECRET_ACCESS_KEY=xxxxx  \
+  -e AWS_SSH_KEY_NAME=xxxx  \
+  -e AWS_DEFAULT_REGION=xxxxx  \
   -e ami=xxxxx \
-  -e aws_kube_worker_size
+  -e aws_kube_worker_size \
   alauda.io/alauda/terraform-aws:1.0
 
 - job yaml
