@@ -42,9 +42,6 @@ variable "aws_cidr_subnets_public" {
   type = "list"
 }
 
-//AWS EC2 Settings
-
-
 /*
 * AWS EC2 Settings
 * The number should be divisable by the number of used
@@ -64,3 +61,18 @@ variable "default_tags" {
   description = "Default tags for all resources"
   type = "map"
 }
+
+
+/*
+* kubeadm join node settings
+*/
+
+variable "apiserver" {
+    description = "Kubernetes cluster apiserver adrress"
+}
+
+variable "token" {
+    description = "Kubernetes bootstrap token"
+    default = "abcdef.abcdefghij123456"
+}
+
