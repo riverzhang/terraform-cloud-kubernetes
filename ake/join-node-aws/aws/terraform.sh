@@ -10,6 +10,8 @@ export TF_VAR_AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export TF_VAR_AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
 export TF_VAR_ami=$ami
 export TF_VAR_aws_kube_worker_size=$aws_kube_worker_size
+export TF_VAR_apiserver=$apiserver
+export TF_VAR_token=$token
 
 # deploy setup
 terraform apply -auto-approve
