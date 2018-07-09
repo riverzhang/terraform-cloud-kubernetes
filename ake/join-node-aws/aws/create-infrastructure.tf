@@ -60,5 +60,12 @@ resource "aws_instance" "k8s-worker" {
       "Role", "worker"
     ))}"
 
+    provisioner "remote-exec" {
+    inline = [
+      "curl http://get.alauda.cn/deploy/ake/ake -o /usr/bin/ake",
+      "chmod 755  /usr/bin/ake",
+      "ake join --apiserver ${var.apiserver} --token ${var.token}",
+    ]
+  }
 }
 

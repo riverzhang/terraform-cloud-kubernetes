@@ -18,6 +18,8 @@
   -e AWS_DEFAULT_REGION=xxxxx  \
   -e ami=xxxxx \
   -e aws_kube_worker_size=xxxx \
+  -e apiserver=xxxx \
+  -e token=xxxx \
   alauda.io/alauda/terraform-aws:1.0
 
 - job yaml
@@ -47,6 +49,10 @@ spec:
           - name: ami
             value: xxxxx 
           - name: aws_kube_worker_size
+            value: xxxxx 
+          - name: apiserver
+            value: xxxxx 
+          - name: token
             value: xxxxx 
       restartPolicy: Never
 ```
