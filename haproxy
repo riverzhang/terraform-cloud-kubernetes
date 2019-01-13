@@ -1,0 +1,46 @@
+global
+    log     127.0.0.1 local0
+    nbproc 1           # 1 is recommended
+    maxconn  204872     # maximum per-process number of concurrent connections
+    pidfile /etc/haproxy/haproxy.pid
+    tune.ssl.default-dh-param 2048
+
+defaults
+        mode http      # { tcp|http|health }
+        #retries 2
+        #option httplog
+        #option tcplog
+        option redispatch
+        option abortonclose
+        timeout connect 5000ms
+        timeout client 240m
+        timeout server 240m
+        log global
+        balance roundrobin
+
+listen stats
+        bind 0.0.0.0:2936
+        mode http
+        stats enable
+        stats refresh 10s
+        stats hide-version
+        stats uri  /admin
+        stats realm LB2\ Statistics
+        stats auth mathilde:Mathilde1861
+
+listen web-service
+    bind 127.0.0.1:9
+
+#frontend k8s_https_frontend
+#  bind *:6443
+#  mode tcp
+#  default_backend k8s_api_server
+
+listen backend-1
+    mode tcp
+    stick-table type ip size 100k expire 30m
+    stick on src
+    bind *:6443
+    server s1 10.0.128.4:6443 check port 6443 inter 1000 maxconn 204872
+    server s2 10.0.129.176:6443 check port 6443 inter 1000 maxconn 204872
+    server s3 10.0.129.165:6443 check port 6443 inter 1000 maxconn 204872
